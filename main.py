@@ -1,6 +1,7 @@
 from fastapi import FastAPI
 from fastapi.staticfiles import StaticFiles
 from fastapi.middleware.cors import CORSMiddleware
+from fastapi.responses import FileResponse, RedirectResponse
 from api.routes import chat, documents, sessions
 from dotenv import load_dotenv
 
@@ -23,9 +24,18 @@ app.include_router(chat.router)
 app.include_router(documents.router)
 app.include_router(sessions.router)
 
-app.mount("/dashboard", StaticFiles(directory="dashboard", html=True), name="dashboard")
-app.mount("/", StaticFiles(directory="frontend", html=True), name="frontend")
-
 @app.get("/health")
 def health():
     return {"status": "ok", "version": "1.0.0"}
+
+@app.get("/dashboard", include_in_schema=False)
+async def dashboard_redirect():
+    return RedirectResponse(url="/dashboard/")
+
+@app.get("/dashboard/", include_in_schema=False)
+async def dashboard_page():
+    return FileResponse("dashboard/index.html")
+
+# Archivos estáticos — siempre al final
+app.mount("/dashboard", StaticFiles(directory="dashboard"), name="dashboard-static")
+app.mount("/", StaticFiles(directory="frontend", html=True), name="frontend")

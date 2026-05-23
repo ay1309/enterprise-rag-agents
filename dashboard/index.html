@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Dashboard — Enterprise RAG</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="dashboard">
+    <header class="dash-header">
+      <div>
+        <h1>Dashboard</h1>
+        <p class="subtitle">Enterprise Agent (RAG)</p>
+      </div>
+      <a href="/" class="back-link">← Back to Chat</a>
+    </header>
+
+    <div class="stats-grid">
+      <div class="stat-card">
+        <div class="stat-number" id="doc-count">—</div>
+        <div class="stat-label">Documents</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-number" id="chunk-count">—</div>
+        <div class="stat-label">Indexed Chunks</div>
+      </div>
+    </div>
+
+    <div class="doc-section">
+      <h2>Documents Uploaded</h2>
+      <div id="doc-grid" class="doc-grid"></div>
+    </div>
+  </div>
+  <script src="app.js"></script>
+</body>
+</html>
