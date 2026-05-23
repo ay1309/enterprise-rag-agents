@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Enterprise RAG Assistant</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="app">
+    <header class="header">
+      <div class="header-left">
+        <div class="logo">R</div>
+        <div>
+          <h1>Enterprise RAG</h1>
+          <span class="subtitle">Agents + Document Search</span>
+        </div>
+      </div>
+      <div class="header-right">
+        <a href="/dashboard" class="dashboard-link">Dashboard →</a>
+        <span class="status offline" id="status">Con</span>
+      </div>
+    </header>
+
+    <div class="upload-bar">
+      <label class="upload-btn">
+        📄 Upload PDF
+        <input type="file" id="pdf-input" accept=".pdf" hidden>
+      </label>
+      <div id="doc-list" class="doc-list"></div>
+    </div>
+
+    <main class="chat-window" id="chat-window">
+      <div class="welcome">
+        <p>Upload a PDF and ask questions about it.</p>
+        <p>I can also search the web for you.</p>
+      </div>
+    </main>
+
+    <footer class="input-area">
+      <textarea id="user-input" placeholder="Ask a question about the enterprise..." rows="1"></textarea>
+      <button id="send-btn">Send</button>
+    </footer>
+  </div>
+  <script src="app.js"></script>
+</body>
+</html>
